@@ -1,0 +1,134 @@
+<header class="clearfix">
+	<div id="call-to-action"><a href="#"><span>Available</span>Hire Me</a></div>
+	<h2 id="tagline">Simple templates that tug at your<span class="heart"></span>strings</h2>
+	<ul class="breadcrumbs">
+		<li>You are here:</li>
+		<li><a href="#">Home</a></li>
+		<li><a href="page_styles.html">Pages</a></li>
+		<li>Project Collaborators</li>
+	</ul>
+</header>
+<!-- /Call to action -->
+
+<div class="cl"></div>
+
+<!-- Content Area -->
+<div id="content-area" class="container page clearfix">
+
+	<div class="container-12">
+
+		<article class="clearfix post entity-wrapper" style="padding-bottom:3px; margin-left:0px;">
+		
+			<div class="format-ribbon"></div><!-- post format indication ribbon -->
+			
+			<header class="col-12">
+				<h3>Project Collaborators</h3>
+			</header>
+			
+			<div class="cl"></div>
+			<%= render :partial => "projects/subnav" %>
+			
+			
+			<div class="col-2" >
+				<a class="button-large-1 entity-show" href="page_contact.html">Invite  People</a>
+        <!-- <a class="button-large-2" href="features.html">Features</a> -->
+			</div>
+			
+			<div class="col-10">
+				<p class="mission-statement"  >
+					This project has several collaborators. <br />
+					You can add more collaborators by inviting them. 
+				</p>
+			
+			</div>
+			
+			
+			
+			
+			<div class="cl"></div>
+			
+			
+			<section class="col-2">
+			</section>
+			<div class="col-10" >
+			  <%= form_for User.new , :url => add_collaborator_url ,
+            :html => {:class=>"uniForm hide entity" } do |f| %>
+            <%= hidden_field_tag 'project_id', @project.slug %> 
+           <fieldset class="inlineLabels">
+             <div class="ctrlHolder">
+               <%= f.label :email, "Email" %>
+               <%= f.text_field :email,  :size => "35", :class => "textInput" %>
+               <p class="formHint">You can key in several emails, separated by semicolon ( ; ).<br />
+                 Example <span style="background-color:#FFFCDF;"> willy@gmail.com ; emily@gmail.com</span></p>
+             </div>
+             
+             <div class="ctrlHolder">
+                <%= label_tag :message, "Message" %>
+                <%= text_area_tag :message  %>
+              </div>
+
+             
+
+             <div class="buttonHolder">
+               <button type="submit" class="primaryAction entity-hide">Cancel</button>
+               <button type="submit" class="primaryAction">Save</button>
+             </div>
+           </fieldset>
+        <% end %>
+      </div>
+      
+      <!-- <section class="col-2">
+        </section>
+         -->
+      
+			
+			<div class="cl"></div>
+		</article>
+		
+		
+		
+		<div class="col-12-wrap clearfix post" style="padding-bottom:20px;" >
+		  <!-- <section class="col-5" >
+		        <figure>
+		          <%= image_tag get_profile_pic_url(@profile.profile_pic), :width => "380" %>
+		        </figure>
+		      </section>
+		      
+		      <section class="col-7" style="padding-top:10px;">
+		        <h4><%= @profile.name %></h4>
+		        <p>
+		          <%= @profile.description %>
+		     
+		        </p>
+		      
+		        <a class="button-3" href="#">Follow</a>
+		      </section>
+		      
+		      <div class="cl"></div> -->
+			
+			<section class="col-12">
+				<blockquote class="clearfix">
+				  Coming together is a beginning. Keeping together is progress. Working together is success.
+					<div class="cl"></div>
+					<div class="author alignright">
+						<small> - Henry Ford</small>
+					</div>
+				</blockquote>
+			</section>
+			
+			<div class="cl"></div>
+
+			<% @project.get_participations_ordered.each do |participation| %>
+			  <%= render :partial => "collaborator_list_entry" , :locals => {:participation => participation }%>
+			<% end %>
+			
+	
+			<div class="cl"></div>
+			
+		</div>
+
+		<div class="cl"></div>
+		
+	</div><!-- .container-12 -->
+	
+</div><!-- .container .page -->

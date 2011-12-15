@@ -1,0 +1,214 @@
+
+<div id="content-area" class="container clearfix">
+
+  <div class="container-12">
+
+    <div class="col-8-wrap clearfix">
+
+      <article class="clearfix post format-image">
+
+        <div class="format-ribbon"></div><!-- post format indication ribbon -->
+
+        <header class="col-8">
+          <h3><%= @picture.title %></h3>
+        </header>
+
+        <div class="cl"></div>
+
+        <div class="col-8 slider-wrapper">
+          <div class="ribbon"></div>
+        
+          <div class="image-wrapper">
+
+            <div class="image">
+              <div class="hide" id="title_container" style="width:250px;">
+              
+                 <%= form_tag  add_positional_comment_url(@picture.id), 
+                    :id => "positionalCommentForm" , :class => "ajaxform" , :method => :post do  %>
+                     <fieldset>
+                       <%= hidden_field_tag 'x1', '', :id=>"x1" %>
+                       <%= hidden_field_tag 'y1', '', :id=>"y1" %>
+                       <%= hidden_field_tag 'x2', '', :id=>"x2" %>
+                       <%= hidden_field_tag 'y2', '', :id=>"y2" %>
+                       
+                       <%= label_tag :commment_value, "Feedback"%><br />
+                       <%= text_area_tag 'comment_value', '' ,  :rows => 2, :cols=> 25 %> <br />
+                      <input type="submit" class="" value="Submit">
+                     </fieldset>
+                  <% end %>
+                  
+                  
+              </div>
+              <%= image_tag @picture.show_resized_url, :width => "620" ,
+                  :class => "image_feedback", :id => "target"%>
+         
+              
+              <%= render :partial => "feedback_map"%>
+            </div>
+            
+            <%  content_for :additional_css  do %>
+              <%= stylesheet_link_tag "jquery.Jcrop.css"%>
+            <% end %>
+            
+            <% content_for :additional_js do %>
+              <%= javascript_include_tag "jquery.Jcrop.min.js", "phototagging_exe.js" %>
+              <%= transloadit_jquerify :upload_revision, :wait => true %>
+            <% end %>
+            
+            
+            <div class="cl"></div>
+
+            <section class="col-8">
+              <!-- <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae tortor sapien, nec volutpat felis. Maecenas placerat, dui at pulvinar eleifend, est massa accumsan nibh, in aliquet est purus sed lectus. Proin ac dolor eu dui fermentum pulvinar et id dolor. Aliquam lacinia, risus id commodo condimentum, nibh purus dignissim magna, at hendrerit metus arcu quis felis. Nulla tincidunt commodo placerat. Donec tincidunt suscipit erat quis posuere. In quis tellus mauris. Duis quis ligula id mauris lacinia posuere. Maecenas auctor, nisl eu tristique feugiat, nulla nisl mattis ligula, vel posuere purus lectus vel nunc. Nunc tincidunt sagittis lobortis. Pellentesque mauris ante, fringilla nec consequat ut, ornare non velit. Etiam tincidunt rutrum condimentum. In elementum gravida nulla, ut vehicula lacus laoreet eu. Nam leo justo, rhoncus eget dapibus eget, suscipit et lectus. Ut et porttitor diam.
+              </p><p>
+                Suspendisse id cursus erat. Mauris non nisl dolor. Morbi id erat sapien. Mauris imperdiet, odio in tincidunt pretium, massa ipsum tincidunt sapien, quis rutrum mauris nisl ut ante. Proin fermentum felis nec eros dictum elementum. Mauris et eros quis magna tincidunt aliquet. Nullam quis enim nec neque sagittis imperdiet. Ut eu pellentesque orci. Donec elementum scelerisque massa, egestas venenatis nisi accumsan ut. Morbi tempus dictum nisi. Integer in nisl sed enim varius dapibus.
+              </p> -->
+            </section>
+
+            <div class="cl"></div>
+
+            <footer class="meta col-8">
+              <p>03.31.2011  |  <a class="comments" href="#">13</a>  |  Tags : <a href="#">HTML5</a>, <a href="#">CSS3</a>, <a href="#">jQuery</a>, <a href="#">Usability</a></p>
+            </footer>
+
+            <hr class="col-8" />
+
+            <section class="col-2">
+              <figure>
+                <%= image_tag get_profile_pic_url(@profile.profile_pic), :width => "140" , :style => "max-height : 140px;"%>
+                
+              </figure>
+            </section>
+            <section class="col-6" style="width:350px;">
+              <h6 style="margin-top:10px;">By: <%= @profile.name %></h6>
+              <p><small>
+                <%= @profile.description %>
+               
+              </small></p>
+              <!-- <a class="button-1" href="#">Email</a> -->
+              <a class="button-3" href="#">Follow</a>
+            </section>
+
+          </article>
+
+          <!-- Comments -->
+          <%= render :partial => "comment_list" %>
+
+            <!-- /Comments -->
+
+            <div class="cl"></div>
+
+          </div><!-- .col-8-wrap -->
+
+          <!-- Side Bar -->
+          <aside class="col-4">
+            
+            <div class="widget widget-style-1">
+              <h4>Upload Revision</h4>
+              
+              <%= form_for [ Picture.new], :url => create_revision_url , 
+                :html => { :id => 'upload_revision' } do |form| %>
+                <%= transloadit :pilipoto_store_image %>
+                <%= form.label      :original_url, 'File to upload' %>
+                <%= form.file_field :original_url %>
+                <%= hidden_field_tag 'is_original', REVISION_PICTURE %>
+                <%= hidden_field_tag 'project_id', @project.id %>
+                <%= hidden_field_tag 'original_picture_id', @original_picture.id %>
+                <%= hidden_field_tag 'project_originator_id', @project_originator.id %>
+                <%= hidden_field_tag 'user_id', current_user.id %>
+                <!-- <input name="my_file" multiple="multiple" /> -->
+                <%= form.submit "Upload" %>
+              <% end %>
+              
+              
+                
+                
+              <!-- <ul>
+                             <li><a href="#">Web Design (6)</a></li>
+                             <li><a href="#">Graphic Design (11)</a></li>
+                             <li><a href="#">Motion Graphics (10)</a></li>
+                             <li><a href="#">Usability (18)</a></li>
+                             <li><a href="#">Mobile Apps (3)</a></li>
+                           </ul> -->
+            </div>
+            
+    
+            
+            
+            <% if @revisions.count > 0 %>
+               <!-- draw original -->
+              <% if @original_picture.id != @picture.id %>
+              <div class="widget widget-style-1">
+                <h4>Original</h4>
+            
+                <ul>
+                    <li>
+                      <!-- <a href="#">Web Design (6)</a> -->
+                      <%= link_to project_picture_url(@project, @original_picture ) do %>
+                        <%= image_tag @original_picture.index_resized_url , :width => "220"  , 
+                            :style => "border : 5px solid rgb(230,230,230);"%>
+                      <% end %>
+                    </li>
+                </ul>
+                
+            
+              </div><!-- .widget .widget-style-1 -->
+              <% end %>
+            
+              <!-- draw revision list -->
+              <div class="widget widget-style-1">
+                <h4>Revisions</h4>
+              
+                <ul>
+                  <% @revisions.each do |revision| %>
+                    <li>
+                      <!-- <a href="#">Web Design (6)</a> -->
+                      <% if revision.id ==  @picture.id %>
+                        <%= link_to project_picture_url(@project, revision ) do %>
+                          <%= image_tag revision.index_resized_url , :width => "220" , 
+                              :style => "border : 5px dashed rgb(200,200,200);"%>
+                        <% end %>
+                      <% else %>
+                        <%= link_to project_picture_url(@project, revision ) do %>
+                          <%= image_tag revision.index_resized_url , :width => "220" , 
+                              :style => "border : 5px solid rgb(230,230,230);"%>
+                        <% end %>
+                      <% end %>
+                    </li>
+                  <% end %>
+                </ul>
+              
+              </div><!-- .widget .widget-style-1 -->
+            <% end %>
+            
+            
+            
+
+            <div class="widget widget-style-3">
+              <h4>Collaborators</h4>
+              <ul>
+                <li><a href="#">xHTML</a></li>
+                <li><a href="#">Photoshop</a></li>
+                <li><a href="#">HTML5</a></li>
+                <li><a href="#">CSS3</a></li>
+                <li><a href="#">jQuery</a></li>
+                <li><a href="#">PHP</a></li>
+                <li><a href="#">Wordpress</a></li>
+                <li><a href="#">MySQL</a></li>
+                <li><a href="#">AJAX</a></li>
+                <li><a href="#">Python</a></li>
+                <li><a href="#">RoR</a></li>
+                <li><a href="#">Illustrator</a></li>
+                <li><a href="#">Responsive</a></li>
+              </ul>
+            </div><!-- .widget .widget-style-3 -->
+
+          </aside>
+          <!-- / Side Bar -->
+
+        </div><!-- .container-12 -->
+
+      </div><!-- .container .list -->
+
+      <!-- /Content Area -->

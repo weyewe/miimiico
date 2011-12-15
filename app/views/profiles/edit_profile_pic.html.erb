@@ -1,0 +1,95 @@
+<header class="clearfix">
+	<div id="call-to-action"><a href="#"><span>Available</span>Hire Me</a></div>
+	<h2 id="tagline">Simple templates that tug at your<span class="heart"></span>strings</h2>
+	<ul class="breadcrumbs">
+		<li>You are here:</li>
+		<li><a href="#">Home</a></li>
+		<li><a href="page_styles.html">Pages</a></li>
+		<li>Project Collaborators</li>
+	</ul>
+</header>
+<!-- /Call to action -->
+
+<div class="cl"></div>
+
+<!-- Content Area -->
+<div id="content-area" class="container page clearfix">
+
+	<div class="container-12">
+
+		<article class="clearfix post entity-wrapper profile-page" style="padding-bottom:3px; margin-left:0px;">
+		
+			<div class="format-ribbon"></div><!-- post format indication ribbon -->
+			
+			<header class="col-12">
+				<h3><%= "Profile & Setting" %></h3>
+			</header>
+			
+			<div class="cl"></div>
+			
+			<%= render :partial => "profiles/profile_navigation"%>
+			
+			<div class="cl"></div>
+			
+			
+		</article>
+		
+		
+		
+		<div class="col-12-wrap clearfix post entity-wrapper"  >
+			<section class="col-5" >
+				<figure>
+				  <%= image_tag get_profile_pic_url(@profile.profile_pic), :width => "380"%>
+				</figure>
+			</section>
+			
+			<section class="col-7 entity-display" style="padding-top:10px;">
+				<h4>Upload new profile pic</h4>
+				
+				<p>
+					Great profile picture shows expertise. Upload the best you've ever had!
+					
+					<br />
+					We recommend you to  upload square sized picture as it shows credibility<br />
+					
+				</p>
+				<!-- <a class="button-1" href="#">Email</a>
+				        <a class="button-2" href="#">Call</a> -->
+				        <%= form_for @profile, :url => update_profile_pic_url , 
+                  :html => { :id => 'upload_new_profile_pic' , :class => "uniForm exeShowLoading"} do |form| %>
+                  <%= transloadit :pilipoto_profile_image %>
+               
+                  
+                    <fieldset>
+                      <div class="ctrlHolder">
+                        <%= form.label      :profile_pic, 'Profile Pic' %>
+                        <%= form.file_field :profile_pic , :class => "fileUpload" %>
+                        <!-- <input id="" name="" size="35" class="fileUpload" type="file"> -->
+                      </div>
+
+                      <div class="buttonHolder"><button type="submit" class="primaryAction">Submit</button></div>
+                    </fieldset>
+            
+                  <!-- <input name="my_file" multiple="multiple" /> -->
+                  <%#= form.submit "Upload" %>
+                <% end %>
+			</section>
+			
+			<% content_for :additional_js do %>
+        <%= transloadit_jquerify :upload_new_profile_pic, :wait => true %>
+      <% end %>
+	
+			
+			
+			
+			
+			
+			<div class="cl"></div>
+			
+		</div>
+
+		<div class="cl"></div>
+		
+	</div><!-- .container-12 -->
+	
+</div><!-- .container .page -->

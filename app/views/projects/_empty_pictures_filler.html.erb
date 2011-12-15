@@ -1,0 +1,59 @@
+<div id="content-area" class="container list clearfix">      
+  <div class="container-12">
+    <article class="clearfix post" style="padding:10px; margin:0; margin-bottom:10px;">
+      <div class="format-ribbon"></div>
+
+      <header class="col-12">
+        <h3><%= @project.title %></h3>
+      </header>
+
+      <div class="cl"></div>
+      <section class="col-4">
+        <!-- <a class="alignright button-large-1 pad-l-20 pad-r-20" href="page_contact.html">Upload</a> -->
+        <%= form_for [@project, Picture.new], :html => { :id => 'upload', :class => "willy" } do |form| %>
+          <%= transloadit :pilipoto_store_image %>
+          <%= form.label      :original_url, 'File to upload' %>
+          <%= form.file_field :original_url, :multiple => "multiple" %>
+          <%= hidden_field_tag 'is_original', ORIGINAL_PICTURE %>
+          <%= hidden_field_tag 'project_originator_id', @project_originator.id %>
+          
+          <!-- <input name="my_file" multiple="multiple" /> -->
+          <%= form.submit "Upload" %>
+        <% end %>
+
+        
+        
+        <% content_for :additional_js do %>
+          <%= transloadit_jquerify :upload, :wait => true %>
+        <% end %>
+        
+        
+        
+        
+      </section>
+
+      <section class="col-8">
+        <p class="mission-statement">
+          You haven't uploaded any pictures <br />
+          To add pictures, click the Browse, then Upload button.
+        </p>
+      </section>
+      
+      <div class="cl"></div>
+      
+      <section class="col-2">
+      </section>
+      
+      <section class="col-10">
+      </section>
+
+      <div class="cl"></div>
+    </article>
+  </div> <!-- .container-12 -->
+</div><!-- #content-area -->
+      
+<% if @project.pictures.count == 0 %>
+  <%= render :partial =>"default_image_filler" %>
+<% else %>
+  <%= render :partial => "uploaded_pictures"%>
+<% end %>

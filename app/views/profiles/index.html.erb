@@ -1,0 +1,94 @@
+<header class="clearfix">
+	<div id="call-to-action"><a href="#"><span>Available</span>Hire Me</a></div>
+	<h2 id="tagline">Simple templates that tug at your<span class="heart"></span>strings</h2>
+	<ul class="breadcrumbs">
+		<li>You are here:</li>
+		<li><a href="#">Home</a></li>
+		<li><a href="page_styles.html">Pages</a></li>
+		<li>Project Collaborators</li>
+	</ul>
+</header>
+<!-- /Call to action -->
+
+<div class="cl"></div>
+
+<!-- Content Area -->
+<div id="content-area" class="container page clearfix">
+
+	<div class="container-12">
+
+		<article class="clearfix post entity-wrapper profile-page" style="padding-bottom:3px; margin-left:0px;">
+		
+			<div class="format-ribbon"></div><!-- post format indication ribbon -->
+			
+			<header class="col-12">
+				<h3><%= "Profile & Setting" %></h3>
+			</header>
+			
+			<div class="cl"></div>
+			
+			<%= render :partial => "profile_navigation"%>
+			
+			<div class="cl"></div>
+			
+			
+		</article>
+		
+		
+		
+		<div class="col-12-wrap clearfix post entity-wrapper"  >
+			<section class="col-5" >
+				<figure>
+				  
+				  
+				  <%= image_tag get_profile_pic_url(@profile.profile_pic) , :width => "380" %>
+				</figure>
+			</section>
+			
+			<section class="col-7 entity-display" style="padding-top:10px;">
+				<h4><%= get_content(@profile.name , :fake_name) %> </h4>
+				
+				<p>
+				  <%= get_content(@profile.description, :fake_description)%>
+				</p>
+				<!-- <a class="button-1" href="#">Email</a>
+				        <a class="button-2" href="#">Call</a> -->
+				<a class="button-1 show-entity-edit" style="color:#FFFFFF;" href="#">Edit</a>
+			</section>
+			
+			<section class="col-7 entity-edit hide">
+			  <%= form_for current_user.profile , 
+            :html => {:class=>"uniForm exeShowLoading entity" } do |f| %>
+           <fieldset class="inlineLabels">
+             <div class="ctrlHolder">
+               <%= f.label :name, "Name" %>
+               <%= f.text_field :name,  :size => "35", :class => "textInput" %>
+             </div>
+
+             <div class="ctrlHolder">
+               <%= f.label :description, "Personal Description" %>
+               <%= f.text_area :description,  :rows => "25", :cols=> "25" %>
+             </div>
+
+             <div class="buttonHolder">
+               <button type="submit" class="primaryAction hide-entity-edit">Cancel</button>
+               <button type="submit" class="primaryAction">Save</button>
+             </div>
+           </fieldset>
+        <% end %>
+			</section>
+			
+			
+			
+			
+			
+			
+			<div class="cl"></div>
+			
+		</div>
+
+		<div class="cl"></div>
+		
+	</div><!-- .container-12 -->
+	
+</div><!-- .container .page -->

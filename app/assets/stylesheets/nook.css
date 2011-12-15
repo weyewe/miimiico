@@ -1,0 +1,126 @@
+/* Nook Color Picker */
+
+	#nook {
+		position: fixed;
+		top: 25%;
+		right: -0;
+		z-index: 999999;
+		background: #fff;
+		width: 130px;
+		margin-right: -180px;
+		border: 1px solid #dbddd8;
+		-webkit-box-shadow: 0 0 5px #dbddd8;
+		   -moz-box-shadow: 0 0 5px #dbddd8;
+				box-shadow: 0 0 5px #dbddd8;
+	}
+	
+	#nook-toggle {
+		cursor: pointer;
+		cursor: hand;
+		position: absolute;
+		top: 9px;
+		left: -41px;
+		z-index: 99997;
+		width: 40px !important;
+		height: 40px !important;
+		background: #fff url('images/cog.png') no-repeat 10px 10px;
+		border-top: 1px solid #dbddd8;
+		border-bottom: 1px solid #dbddd8;
+		border-left: 1px solid #dbddd8;
+	}
+	
+	#nook-toggle:hover,
+	#nook .n-o {
+		background-position: 10px -30px !important;
+	}
+	
+	#nook h6 {
+		margin: 10px 10px 0 10px;
+		padding: 0;
+		line-height: 20px;
+		color: #707070;
+		font-size: 12px;
+		text-transform: uppercase;
+		text-decoration: none;
+		border-bottom: 1px solid #ebebeb;
+	}
+
+	#hex li {
+		position: relative;
+		display: block;
+		float: left;
+		margin-left: 10px;
+		margin-top: 10px;
+		width: 110px;
+		height: 30px;
+	}
+	
+	#hex a {
+		display: block;
+		margin: 0;
+		padding: 0;
+		height: 30px;
+	}
+	/*
+	#hex a:hover {
+		height: 40px !important;
+		margin: -5px 0 0 0;
+		-webkit-box-shadow: 0 2px 3px #cccccc;
+		   -moz-box-shadow: 0 2px 3px #cccccc;
+				box-shadow: 0 2px 3px #cccccc;
+	}*/
+	
+	#hex a span {
+		display: inline-block;
+		float: left;
+		height: 100%;
+		width: 20%;
+		margin: 0;
+		padding: 0;
+	}
+
+	#pattern li {
+		position: relative;
+		display: block;
+		float: left;
+		margin-left: 10px;
+		margin-top: 10px;
+		width: 20px;
+		height: 20px;
+	}
+	
+	#pattern a {
+		display: block;
+		margin: 0;
+		padding: 0;
+		height: 20px;
+		width: 20px;
+		outline: 0;
+		background-color: #f0f4e9 !important;
+	}
+	
+	#pattern a:active,
+	#hex a:active {
+		outline: 0;
+	}
+
+	.nook-hover {
+		-webkit-box-shadow: 0 2px 3px #cccccc;
+		   -moz-box-shadow: 0 2px 3px #cccccc;
+				box-shadow: 0 2px 3px #cccccc;
+	}
+	
+	#nook .nook-buy {
+		height: 30px;
+		display: block;
+		margin: 10px;
+		background: #759f9d;
+		color: #fff;
+		text-decoration: none;
+		text-align: center;
+		line-height: 30px;
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+	
+	

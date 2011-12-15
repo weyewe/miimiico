@@ -1,0 +1,22 @@
+<!-- Left Column (Header) -->
+<header id="header">
+
+  <!-- Logo -->
+  <h1>
+    <a href="index-2.html">
+      <!-- <img src="images/logo.png" alt="logo" width="114" height="38"> -->
+      <%= image_tag "logo.png" , :width => "114", :height => "38" %>
+    </a>
+  </h1>
+  <!-- /Logo -->
+
+  <!-- Navigation -->
+
+  <% if not current_user %>
+    <%= render :partial => "home/public_navigation"%>
+  <% elsif current_user %>
+    <%= render :partial => "home/private_navigation"%>
+  <% end %>
+
+</header>
+<!-- /Left Column (Header) -->

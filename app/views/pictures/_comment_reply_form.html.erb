@@ -1,0 +1,24 @@
+<li class="comment even thread-even depth-2 comment-body comment-reply-form-wrapper" style="background-color: #FFFFFF;">
+  
+   <%= form_tag  add_comment_url(@picture.id), :class=>"uniForm ajaxform" , :method => :post do  %>
+       <%= hidden_field_tag 'parent_comment_id', parent_comment_id %> 
+       
+       <% if not replying_to_comment.nil? %>
+        <%= hidden_field_tag 'replying_to_comment_id', replying_to_comment.id %> 
+       <% end %>
+      <fieldset class="inlineLabels">
+
+        <div class="ctrlHolder">
+          <%= label_tag :comment_value, "Reply" %>
+          <%= text_area_tag 'comment_value', '' ,  :rows => 5, :cols=> 25, :style => "height: 5em;" %>
+        </div>
+
+        <div class="buttonHolder">
+          <button type="submit" class="primaryAction">Save</button>
+        </div>
+       
+      </fieldset>
+   <% end %>
+   
+   
+</li>

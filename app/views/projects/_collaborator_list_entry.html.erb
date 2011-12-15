@@ -1,0 +1,29 @@
+
+<section class="col-4" style="height:450px; position:relative;" >
+	<figure style="height:300px; border:1px solid rgb(230,230,230);">
+	  
+	  
+	  
+	  <%= image_tag get_profile_pic_url(participation.user.profile.profile_pic), :width => "300"%>
+    <!-- <img src="../_images/assets/bio-4-col-1.jpg" width="300" height="260" alt="Bio 2"> -->
+	</figure>
+	<h4 class="pad-t-10"><%= participation.user.profile.name || "."%></h4>
+	<% if participation.user.id == participation.project.project_originator_id %>
+	  <small> <%= "Project Owner" %></small>
+	 
+	<% else %>
+	  <small><%= participation.user.email %></small>
+	<% end %>
+	
+	<p>
+	  <% if participation.user.last_sign_in_at.nil? %>
+	   Hasn't login at all
+	  <% else %>
+	  Last login at <%= participation.user.last_sign_in_at %>
+	  <% end %>
+	</p>
+	<!-- <a class="button-1" href="#">Email</a>
+	          <a class="button-2" href="#">Call</a> -->
+	<a class="button-3" href="#" style="position:absolute; bottom:5px;">Follow</a>
+</section>
+

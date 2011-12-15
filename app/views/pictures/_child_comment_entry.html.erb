@@ -1,0 +1,18 @@
+ <li class="comment even thread-even depth-2">
+    <div class="comment-body">
+      <div class="comment-author vcard">
+        <%= image_tag get_comment_pic_url(child_comment.user.profile.comment_image), 
+            :width => "60" ,  :class =>"avatar"%>
+
+        <cite class="fn"><%= child_comment.user.profile.name %></cite>
+        <span class="says">says:</span>
+      </div>
+      <div class="comment-meta commentmetadata">
+        <a href="#comment">October 31, 2011 at 12:00 am</a>
+      </div>
+      <p><%= child_comment.body %></p>
+      <div class="reply">
+        <a class="comment-reply-link" href="#respond">Reply</a>
+      </div>
+    </div>
+  </li>

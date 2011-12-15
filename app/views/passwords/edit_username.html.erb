@@ -1,0 +1,121 @@
+<header class="clearfix">
+	<div id="call-to-action"><a href="#"><span>Available</span>Hire Me</a></div>
+	<h2 id="tagline">Simple templates that tug at your<span class="heart"></span>strings</h2>
+	<ul class="breadcrumbs">
+		<li>You are here:</li>
+		<li><a href="#">Home</a></li>
+		<li><a href="page_styles.html">Pages</a></li>
+		<li>Project Collaborators</li>
+	</ul>
+</header>
+<!-- /Call to action -->
+
+<div class="cl"></div>
+
+<!-- Content Area -->
+<div id="content-area" class="container page clearfix">
+
+	<div class="container-12">
+
+		<article class="clearfix post entity-wrapper profile-page" style="padding-bottom:3px; margin-left:0px;">
+		
+			<div class="format-ribbon"></div><!-- post format indication ribbon -->
+			
+			<header class="col-12">
+				<h3><%= "Profile & Setting" %></h3>
+			</header>
+			
+			<div class="cl"></div>
+			
+			<%= render :partial => "profiles/profile_navigation"%>
+			
+			<div class="cl"></div>
+			
+			
+		</article>
+		
+		
+		
+		<div class="col-12-wrap clearfix post entity-wrapper"  >
+			<section class="col-5" >
+				<figure>
+				  <%= image_tag "bio-5-col-1.jpg", :width => "380", :height => "320"%>
+				</figure>
+			</section>
+			
+			<section class="col-7 entity-display" style="padding-top:10px;">
+				<h4>Change Username</h4>
+				
+				<p>
+					Your username is important for your branding.<br /> 
+					Do you want  <b>www.phottlr.com/<span style="background-color:#FFFCDF;">your.username<span></b> 
+					  as your phottlr address?
+					<br /><br />
+					
+				</p>
+				<!-- <a class="button-1" href="#">Email</a>
+				        <a class="button-2" href="#">Call</a> -->
+				        
+				        <%= form_for( @user , :as => @user, :url => update_username_url ,
+                      :html => {:method => :put, :class => " uniForm" } ) do |f| %>
+
+                <fieldset class="inlineLabels">
+            
+
+
+                  <div class="ctrlHolder">
+                    <%= f.label :username, "Your Username" %>
+                    <%= f.text_field :username,  :size => "35", :class => "textInput" %>
+                    <p class="formHint">username can only <br />
+                      contain <span style="background-color:#FFFCDF;">alphabets(a to z) and dot ( . ) </span></p>
+                  </div>
+
+
+                 
+
+
+
+                  <div class="buttonHolder"><button type="submit" class="primaryAction">Submit</button></div>
+                </fieldset>
+                <% end %>
+                
+                
+			</section>
+			
+			
+		  <!-- <section class="col-7 entity-edit hide">
+		        <%= form_for current_user.profile , 
+		            :html => {:class=>"uniForm  entity" } do |f| %>
+		           <fieldset class="inlineLabels">
+		             <div class="ctrlHolder">
+		               <%= f.label :name, "Name" %>
+		               <%= f.text_field :name,  :size => "35", :class => "textInput" %>
+		             </div>
+
+		             <div class="ctrlHolder">
+		               <%= f.label :description, "Personal Description" %>
+		               <%= f.text_area :description,  :rows => "25", :cols=> "25" %>
+		             </div>
+
+		             <div class="buttonHolder">
+		               <button type="submit" class="primaryAction hide-entity-edit">Cancel</button>
+		               <button type="submit" class="primaryAction">Save</button>
+		             </div>
+		           </fieldset>
+		        <% end %>
+		      </section> -->
+			
+			
+			
+			
+			
+			
+			<div class="cl"></div>
+			
+		</div>
+
+		<div class="cl"></div>
+		
+	</div><!-- .container-12 -->
+	
+</div><!-- .container .page -->

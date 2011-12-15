@@ -1,0 +1,24 @@
+<% if @create_root_comment == true %>
+
+  <% root_comment = escape_javascript(render :partial => "pictures/root_comment_entry", 
+       :locals=> {:root_comment => @comment}) %> ;
+
+  $(document).ready(function(){
+    $("ol.commentlist").append('<%= root_comment %>');
+  });
+
+<% else @create_root_comment == false %> 
+  
+  <% child_comment = escape_javascript(render :partial => "pictures/child_comment_entry", 
+  :locals=> {:child_comment => @comment }) %> ;
+
+  $(document).ready(function(){
+    var $child_reply_wrapper = $("li#root_comment-<%= @parent_comment_id %> ul.children");
+    $("li.comment-reply-form-wrapper", $child_reply_wrapper).before( '<%= child_comment %>' );
+    // $("li#root_comment-<%= @parent_comment_id %> ul.children").append('<%= child_comment %>');
+  });
+
+<% end %>
+
+
+

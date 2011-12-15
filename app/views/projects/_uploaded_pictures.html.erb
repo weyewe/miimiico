@@ -1,0 +1,47 @@
+
+	<div id="content-area-2" class="container grid grid-medium clearfix" style="margin-left:70px;">
+	
+	  <% @project.original_pictures.each do |pic| %>
+  		<article class="post format-image">
+  			<div class="format-ribbon"></div><!-- post format indication ribbon -->
+  			<figure>
+  				<a href="blog_single.html">
+  				  <%= image_tag pic.index_resized_url, :width => "280"%>
+  				<div class="preview-large-hover">
+  					<a class="large-image" href="<%= pic.show_resized_url %>"></a>
+  				</div>
+  			</figure>
+  			<header>
+  				<h3 class="post-title">
+            <!-- <a href="blog_single.html">Summer Time Fun</a> -->
+  				  <%= link_to pic.title, project_picture_url( pic.project, pic)%>
+  				</h3>
+  			</header>
+  			<footer class="meta">
+  				<p>03.31.2011  |  <a class="comments" href="blog_single.html#comments"><%= print_revision_count(pic) %> </a>  |  Tags : <a href="#">HTML5</a>, <a href="#">CSS3</a>, <a href="#">jQuery</a>, <a href="#">Usability</a></p>
+  			</footer>
+  		</article>
+		<% end %>
+		
+	</div><!-- .grid -->
+	
+	<div class="cl"></div>
+	
+	<!-- Pagination -->
+	<% if @project.pictures.count > 0 %>
+	<div class="pagination">
+		<ul>
+			<li><a href="#" class="prev">&lsaquo;</a></li>
+			<li><span class="page current">1</span></li>
+			<li><a href="#" title="2" class="page">2</a></li>
+			<li><a href="#" title="3" class="page">3</a></li>
+			<li><a href="#" title="4" class="page">4</a></li>
+			<li><span class="gap">[...]</span></li>
+			<li><a href="#" title="39" class="page">8</a></li>
+			<li><a href="#" class="next">&rsaquo;</a></li>
+		</ul>
+	</div>
+	<% end %>
+	<!-- /Pagination -->
+	
+<!-- /Content Area -->

@@ -1,0 +1,141 @@
+<div id="content-area" class="container list clearfix">
+
+
+      
+  <div class="container-12">
+    <article class="clearfix post entity-wrapper" style="padding:10px; margin:0; margin-bottom:10px;">
+      <div class="format-ribbon"></div>
+
+      <header class="col-12">
+        <h3>Your Projects</h3>
+      </header>
+
+      <div class="cl"></div>
+      <section class="col-2">
+        <a class="alignright button-large-1 pad-l-20 pad-r-20 entity-show" href="page_contact.html">Create New</a>
+      </section>
+
+      <section class="col-10">
+        <p class="mission-statement">
+          <% if current_user.projects.count != 0 %>
+          You have several ongoing projects. <br />
+          To add more projects, click the Create New button.
+          <% else %>
+          You do not have any ongoing projects. <br />
+          To add project, click the Create New button.
+          <% end %>
+        </p>
+      </section>
+      
+      <div class="cl"></div>
+      
+      <section class="col-2">
+      </section>
+      
+      <section class="col-10">
+        <%= form_for [current_user,@new_project ] , 
+            :html => {:class=>"uniForm hide entity exeShowLoading" } do |f| %>
+           <fieldset class="inlineLabels">
+             <div class="ctrlHolder">
+               <%= f.label :title, "Title" %>
+               <%= f.text_field :title,  :size => "35", :class => "textInput" %>
+             </div>
+
+             <div class="ctrlHolder">
+               <%= f.label :description, "Project Description" %>
+               <%= f.text_area :description,  :rows => "25", :cols=> "25" %>
+             </div>
+
+             <div class="buttonHolder">
+               <button type="submit" class="primaryAction entity-hide">Cancel</button>
+               <button type="submit" class="primaryAction">Save</button>
+             </div>
+           </fieldset>
+        <% end %>
+      </section>
+      
+      
+
+      <div class="cl"></div>
+    </article>
+      
+      
+
+    <div class="col-8-wrap clearfix">
+      <% if @projects.count == 0 %>
+      
+      <article class="post col-8-wrap format-image clearfix entity-wrapper">
+       <p>No project at all.</p>
+      </article>
+
+      <div class="cl"></div>
+      
+      
+      <% end %>
+      
+      <!-- Archive List -->
+      <% @projects.each do |project| %>
+        <% if  project.can_be_viewed_by?(current_user) %>
+           <%= render :partial => "project_list_entry" , :locals => {:project => project}%>
+        <% end %>
+    
+      <% end %>
+
+      <!-- /Archive List -->
+
+    </div><!-- .col-8-wrap -->
+
+    <!-- Side Bar -->
+    <aside class="col-4">
+
+      <div class="widget widget-style-1">
+        <h4>Private Projects</h4>
+        <ul>
+          <li><a href="#">Jimmy and Jill</a></li>
+          <li><a href="#">Black and White Wedding</a></li>
+          <li><a href="#">Disparate Emotion</a></li>
+          <li><a href="#">Forever With You</a></li>
+          <li><a href="#">Just Nike</a></li>
+        </ul>
+      </div><!-- .widget .widget-style-1 -->
+
+      <div class="widget widget-style-2">
+        <h4>Social Projects</h4>
+        <ul>
+          <li><a href="#">Christmas in February</a></li>
+          <li><a href="#">Young Lion Works</a></li>
+          <li><a href="#">Gowes Goes to Bandung</a></li>
+          <li><a href="#">Green Hornet Karawaci Trip</a></li>
+          <li><a href="#">Remembering the Old Yellow Lane</a></li>
+        </ul>
+      </div><!-- .widget .widget-style-2 -->
+
+      <div class="widget widget-style-3">
+        <h4>People</h4>
+        <ul>
+          <li><a href="#">Willy</a></li>
+          <li><a href="#">Kiel</a></li>
+          <li><a href="#">Wilson</a></li>
+          <li><a href="#">Jammyroquai</a></li>
+          <li><a href="#">Ariel</a></li>
+          <li><a href="#">Maya</a></li>
+          <li><a href="#">Luna</a></li>
+          <li><a href="#">Jimmy</a></li>
+          <li><a href="#">Irfan</a></li>
+          <li><a href="#">Andras</a></li>
+          <li><a href="#">Andro</a></li>
+          <li><a href="#">Hetero</a></li>
+          <li><a href="#">Mega</a></li>
+        </ul>
+      </div><!-- .widget .widget-style-3 -->
+
+    </aside>
+    <!-- / Side Bar -->
+
+  </div><!-- .container-12 -->
+
+</div><!-- .container .list -->
+
+<!-- /Content Area -->
+
+<div class="cl"></div>

@@ -1,0 +1,103 @@
+<% @title  = "Login to PiPoTo"%>
+<!-- Call to action -->
+	<header class="clearfix">
+		<div id="call-to-action"><a href="#"><span>Available</span>Hire Me</a></div>
+		<h2 id="tagline">Simple templates that tug at your<span class="heart"></span>strings</h2>
+		<ul class="breadcrumbs">
+			<li>You are here:</li>
+			<li><a href="#">Home</a></li>
+			<li><a href="page_styles.html">Pages</a></li>
+			<li>Contact Us</li>
+		</ul>
+	</header>
+<!-- /Call to action -->
+
+	<div class="cl"></div>
+
+<!-- Content Area -->
+	<div id="content-area" class="container clearfix">
+	
+		<div class="container-12">
+		
+			<article class="clearfix post">
+				
+				<header class="col-12">
+					<h3>Sign in now</h3>
+				</header>
+				
+				<div class="cl"></div>
+				
+				<div class="col-7-wrap">
+					<section class="col-7">
+						<p class="extra-.txt-large">Start using this tool to save your time, boost your productivity, 
+						  and having fun 
+					  designing great graphics!</p>
+					</section>
+					
+					<section class="col-7">
+            <!-- <div id="gmap"></div> -->
+						<%= form_for(resource, :as => resource_name,
+						 :url => session_path(resource_name), 
+						  :html => { :id=>"contactform", 
+						    :style => "min-height: 300px;"}) do |f| %>
+						                                                    <p>
+						                                                      <small>Great design saves the world. Login with your account</small>
+						                                                      <span class="required">*</span>
+						                                                    </p>
+
+						                                                    <% if not  params[:project_id].nil? %>
+                                                                  <%= hidden_field_tag 'project_id', params[:project_id] %> 
+                                                                <% end %>
+						                                                    <p>
+						                                                      <%= f.text_field :email, :size => "30" %>
+						                                                      <%= f.label :email , "Email"%>
+						                                                    </p>
+						                                                    
+						                                                    <p>
+						                                                      <%= f.password_field :password, :size => "30" %>
+						                                                      <%= f.label :password , "Password"%>
+						                                                    </p>
+						                                                    
+						                                                    <p>
+						                                                      <%= f.submit "Login", :class =>"button-large-3", :id => "submit"%>
+						                                                    </p>
+						                                                    
+						                                                  <% end %>
+					</section>
+				</div>
+				
+				<section class="col-5">
+						<form action="#----YOUR-FORM-ACTION----" method="post" id="contactform">
+							<p><small>Your email address will not be published. Required fields are marked </small><span class="required">*</span></p>
+							<p>
+								<input id="author" name="author" value="" size="30" aria-required="true" type="text">
+								<label for="author">Name</label> <span class="required">*</span>
+							</p>
+							<p>
+								<input id="email" name="email" value="" size="30" aria-required="true" type="text">
+								<label for="email">Email</label> <span class="required">*</span>
+							</p>
+							<p>
+								<input id="url" name="url" value="" size="30" type="text">
+								<label for="url">Website</label>
+							</p>
+							<p class="comment-form-comment">
+								<textarea id="comment" name="comment" cols="43" rows="6" aria-required="true"></textarea>
+							</p>
+							<p>
+								<input class="button-large-3" name="submit" id="submit" value="&nbsp;&nbsp;&nbsp;Submit&nbsp;&nbsp;&nbsp;" type="submit">
+							</p>
+						</form>
+				</section>
+				
+				<div class="cl"></div>
+				
+			</article>
+	
+			<div class="cl"></div>
+			
+		</div><!-- .container-12 -->
+		
+	</div><!-- .container .page -->
+	
+	<!-- /Content Area -->

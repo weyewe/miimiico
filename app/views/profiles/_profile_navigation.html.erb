@@ -1,0 +1,23 @@
+
+<!-- <div class="col-2" >
+  <%#= link_to "Username", edit_username_url, :class => "button-3 #{get_profile_nav_status(params, 'username')}"%>
+</div> -->
+
+<div class="col-2" >
+  <%= link_to "Password", edit_credential_url , :class => "button-3 #{get_profile_nav_status(params, 'password')}"%>
+</div>
+
+
+<div class="col-2" >
+	<%= link_to "Profile", profiles_url , :class => "button-3 #{get_profile_nav_status(params, 'profile')}"%>
+</div>
+
+<div class="col-2" >
+	<%= link_to "Profile Pic", edit_profile_pic_url , :class => "button-3 #{get_profile_nav_status(params, 'profile_pic')}"%>
+</div>
+
+<div class="col-6">
+	<p class="mission-statement"  >
+		Edit your account
+	</p>
+</div>

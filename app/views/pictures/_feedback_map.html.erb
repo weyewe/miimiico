@@ -1,0 +1,7 @@
+<ul class="map">
+  <% @picture.comment_positions.each do |positional_comment| %>
+    <%= render :partial => "pictures/positional_comment" ,
+      :locals => {:positional_comment => positional_comment} %>
+  
+  <% end %>   	
+</ul>

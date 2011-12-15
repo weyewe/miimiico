@@ -1,0 +1,71 @@
+<div id="content-area" class="container list clearfix">      
+  <div class="container-12">
+    <article class="clearfix post" style="padding:10px; margin:0; margin-bottom:10px;">
+      <div class="format-ribbon"></div>
+
+      <header class="col-12">
+        <h3><%= @project.title + " - (#{@project.original_pictures.count}) pictures" %> </h3>
+      </header>
+
+      <div class="cl"></div>
+      
+      <%= render :partial => "projects/subnav" %>
+      
+      
+      <section class="col-4">
+        <!-- <a class="alignright button-large-1 pad-l-20 pad-r-20" href="page_contact.html">Upload</a> -->
+        <%= form_for [@project, Picture.new], :html => { :id => 'upload' , :class => "exeShowLoading"} do |form| %>
+          <%= transloadit :pilipoto_store_image %>
+          <%= form.label      :original_url, 'File to upload' %>
+          <%= form.file_field :original_url, :multiple => "multiple" %>
+          <%= hidden_field_tag 'is_original', ORIGINAL_PICTURE %>
+          <% puts "Fuck. this is before the html.. project_originaltor.id is #{@project_originator.id }\n"*5 %>
+          <%= hidden_field_tag 'project_originator_id', @project_originator.id %>
+          <%= hidden_field_tag 'user_id', current_user.id %>
+          
+          <!-- <input name="my_file" multiple="multiple" /> -->
+          <%= form.submit "Upload" %>
+        <% end %>
+
+       
+        
+        <% content_for :additional_js do %>
+          <%= transloadit_jquerify :upload, :wait => true %>
+        <% end %>
+      </section>
+
+      <section class="col-8">
+        <p class="mission-statement">
+          <% if @project.pictures.count != 0 %>
+          You have uploaded several pictures. <br />
+          To add more pictures, click the Browse, select pictures, then click the Upload button.
+          <% else %>
+          You have not uploaded any picture. <br />
+          To add more pictures, click the Browse, select pictures, then click the Upload button.
+          <% end %>
+        </p>
+      </section>
+      
+      <div class="cl"></div>
+      
+      <section class="col-2">
+      </section>
+      
+      <section class="col-10">
+      </section>
+
+      <div class="cl"></div>
+    </article>
+  </div> <!-- .container-12 -->
+</div><!-- #content-area -->
+      
+
+<%= render :partial => "uploaded_pictures"%>
+
+
+
+
+
+	<!-- /Pagination -->
+	
+<!-- /Content Area -->

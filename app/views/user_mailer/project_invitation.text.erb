@@ -1,0 +1,37 @@
+Hello!
+
+You have been invited to join the project "<%= @project.title %>" by <%= @inviting_user.profile.name %>. 
+
+<% if  ( not @text.nil? )   &&  @text.length != 0%>
+Message from <%= @inviting_user.profile.name %> : 
+" <%= @text %>"
+<% end %>
+
+
+<% if @password.length != 0 %>
+
+Your login credential is :
+Email = <%= @user.email %> 
+Password = <%= @password %>
+
+
+           
+<% end %>
+
+
+
+
+
+<% destination_url = url_for(:host => "#{HOST}" , 
+                    :controller => "projects", 
+                    :action => "show", 
+                    :id => @project.slug  , 
+                    :user_id => @project.project_originator.slug ) %>
+
+To go to the project, please login by clicking <%= url_for(:host => "#{HOST}",
+            :controller => "devise/sessions",
+            :action => "new", 
+            :project_id => @project.slug) %>
+
+
+

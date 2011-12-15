@@ -1,0 +1,47 @@
+
+<div id="comments" class="col-8-wrap comments">
+
+  <header>
+    <h3>3 Feedbacks</h3>
+  </header>
+
+  <div class="cl"></div>
+
+  <!-- Comments -->
+  <section class="cols-8-wrap">
+    <ol class="commentlist clearfix">
+      
+      <% @original_comments.each do |root_comment| %>
+        <%= render :partial => "root_comment_entry" , :locals => {:root_comment => root_comment} %>
+      <% end %>
+    </ol>
+    
+    
+    
+    
+    
+    <div id="respond">
+      <h3 id="reply-title">Add Feedback<small><a rel="nofollow" id="cancel-comment-reply-link" href="#respond" style="display: none;">Cancel reply</a></small></h3>
+        
+       
+      <%= form_tag  add_comment_url(@picture.id), :class=>"uniForm ajaxform" , :id => "commentform" , :method => :post do  %>
+          <p class="comment-notes">Give feedback and task to the graphic artist<span class="required">*</span></p>
+         <fieldset class="inlineLabels">
+
+           <div class="ctrlHolder">
+             <%= label_tag :comment_value, "Feedback" %>
+             <%= text_area_tag 'comment_value', '' ,  :rows => 25, :cols=> 25 %>
+           </div>
+
+           <div class="buttonHolder">
+             <button type="submit" class="primaryAction">Save</button>
+           </div>
+           <%= hidden_field_tag 'parent_comment_id', '' %>
+         </fieldset>
+      <% end %>
+      
+        
+      </div>
+    </section>
+
+  </div>

@@ -1,0 +1,14 @@
+<div style="float:right;">
+  <ul  class="subnav-wrapper">
+    <li class="subnav">
+      <%= link_to "Images", user_project_url(@project.project_originator, @project) ,
+        :class => "button-3 #{get_subnav_status(params, 'images')}"%> 
+    </li>
+    <li class="subnav">
+      <%= link_to "Collaborators",
+      show_collaborators_url( @project ), 
+      :class =>" button-3  #{get_subnav_status(params, 'collaborators')}" %> 
+    </li>
+  </ul>
+</div>
+<div class="cl"></div>

@@ -1,0 +1,20 @@
+<!-- Call to action -->
+<header class="clearfix">
+  <div id="call-to-action"><a href="#"><span>Design</span>Tool</a></div>
+  <h2 id="tagline">Simple tool that saves your<span class="heart"></span>time</h2>
+  <ul class="breadcrumbs">
+    <li>You are here:</li>
+    <li><%= link_to "Projects", user_projects_url(@project.project_originator_id  ) %>
+      <%#= @project.project_originator_id  %></li>
+    <li><%= link_to @project.title, 
+      user_project_url( @project.project_originator_id, @project.id)   %>
+    </li>
+    <li><%= @picture.title %></li>
+  
+  </ul>
+</header>
+<!-- /Call to action -->
+
+<div class="cl"></div>
+
+<%= render :partial => "picture_detail"%>

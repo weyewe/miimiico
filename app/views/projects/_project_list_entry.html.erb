@@ -1,0 +1,52 @@
+  <article class="post col-8-wrap format-image clearfix entity-wrapper">
+    <div class="format-ribbon"></div><!-- post format indication ribbon -->
+    <figure class="col-3">
+      <a href="blog_single.html">
+        <!-- <img src="../_images/assets/entry-3-col-1-list.jpg" width="220" height="157" alt="Summer Time Fun"> -->
+        <%# if project.pictures.count > 0 %>
+        <%= image_tag project.project_list_image , :width => "220"%>  <!-- , :height => "157" -->
+        <%# end %>
+        </a>
+      <div class="preview-large-hover">
+        <a href="../_images/assets/entry-1-large.jpg"></a>
+      </div>
+    </figure>
+    <header>
+      <h3 class="post-title special"><%= link_to project.title, 
+          user_project_url(project.project_originator, project) %>
+      </h3>
+    </header>
+    <div class="entry">
+      <p><%= project.description %></p>
+    </div>
+    <div class="cl"></div>
+    <footer class="meta">
+      <p>03.31.2011  |   <a href="#"><%= project.original_pictures.count %> images</a> |  <a class="comments" href="blog_single.html#comments">13 Collaborators</a>  | 
+         <a href="#" class="entity-show">Add Collaborator</a>  
+      </p>
+      <div class="new-collaborator-wrapper hide entity" style="margin-bottom:3px;">
+        <h3>Add Collaborator</h3>
+      <%= form_for User.new , 
+          :html => {:class=>"uniForm " } do |f| %>
+         <fieldset class="inlineLabels">
+           <div class="ctrlHolder">
+             <%= f.label :email, "Email" %>
+             <%= f.text_field :email,  :size => "35", :class => "textInput" %>
+           </div>
+
+           
+
+           <div class="buttonHolder">
+             <button type="submit" class="primaryAction entity-hide">Cancel</button>
+             <button type="submit" class="primaryAction">Save</button>
+           </div>
+         </fieldset>
+      <% end %>
+      </div>
+      
+
+      <div class="cl"></div>
+    </footer>
+  </article>
+
+  <div class="cl"></div>

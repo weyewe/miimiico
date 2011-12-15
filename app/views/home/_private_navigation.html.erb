@@ -1,0 +1,32 @@
+	<nav id="nav-primary">
+		<ul>
+			<li class=" <%= get_primary_nav_status(params, 'home') %>"><%= link_to "Home", root_url %></li>
+			<li class=" <%= get_primary_nav_status(params, 'private_projects') %>">
+			  <%= link_to "My Projects", user_projects_url(current_user ) %>
+			</li>
+			
+		  <!-- <li class=" <%= get_primary_nav_status(params, 'public_projects') %>">
+		        <%#= link_to "Public Projects", user_projects_url(current_user ) %>
+		      </li> -->
+			
+			
+			<li class=" <%= get_primary_nav_status(params, 'setting') %>">
+		    <%= link_to "Profile & Setting", profiles_url %>
+			</li>
+	
+	    <!-- <li><a href="blog_grid_large.html">Blog</a>
+	       <ul>
+	         <li><a href="blog_classic_1.html">Blog Classic v1</a></li>
+	         <li><a href="blog_classic_2.html">Blog Classic v2</a></li>
+	         <li><a href="blog_single.html">Blog Single</a></li>
+	         <li><a href="blog_grid_small.html">Grid Blog Small</a></li>
+	         <li><a href="blog_grid_medium.html">Grid Blog Medium</a></li>
+	         <li><a href="blog_grid_large.html">Grid Blog Large</a></li>
+	       </ul>
+	     </li> -->
+			<li><!-- <a href="page_styles.html">Pages</a> -->
+	      <%= link_to "Logout", destroy_user_session_url %>
+			</li>
+		</ul>
+	</nav>
+<!-- /Navigation -->

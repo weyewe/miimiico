@@ -1,0 +1,33 @@
+ <li class="comment even thread-odd depth-1 parent" style="padding-bottom:30px; border-bottom:5px dashed rgb(230,230,230);"
+ id="root_comment-<%= root_comment.id  %>">
+    <div class="comment-body">
+      <div class="comment-author vcard">
+        <%= image_tag get_comment_pic_url(root_comment.user.profile.comment_image), 
+          :width => "60" ,  :class =>"avatar", :style => "max-height:60px;"%>
+  
+        <cite class="fn"><%= root_comment.user.profile.name %></cite>
+        <span class="says">says:</span>
+      </div>
+      <div class="comment-meta commentmetadata">
+        <a href="#comment">October 31, 2011 at 12:00 am</a>
+      </div>
+      <p><%=  root_comment.body %></p>
+      <div class="reply">
+        
+        <a class="comment-reply-link" href="#respond" id="comment-<%= root_comment.id %>">
+          <!-- <%= get_reply_count( root_comment.children.count ) %> -->
+        </a>
+      </div>
+
+    </div>
+    <ul class="children ">
+   
+      <% root_comment.children.each do |child_comment| %>
+        <%= render :partial => "child_comment_entry", :locals => {:child_comment => child_comment }%>
+      <% end %>
+      
+      <%= render :partial => "pictures/comment_reply_form", :locals => {
+          :replying_to_comment => nil ,
+          :parent_comment_id => root_comment.id} %>
+    </ul>
+  </li>

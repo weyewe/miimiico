@@ -1,0 +1,8 @@
+auth:
+  key     : a919ae5378334f20b8db4f7610cdd1a7
+  secret  : 7dff49aab9dc91cb62a0fd34bf9e8c2d6eb3b207
+  duration: 1800      # 30 minute validity period for signed upload forms
+
+templates:
+  pilipoto_store_image : '01c6609f69ca43909bdebba0e447f869'
+  pilipoto_profile_image : 'f80943610fe747fdb2469150e6d33b5b'

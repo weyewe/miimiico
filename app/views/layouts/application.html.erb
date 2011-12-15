@@ -1,0 +1,81 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+
+	<meta charset="utf-8">
+
+	<title> <%= extract_page_title %> | PiPoTo.com</title>
+	
+	<meta name="description" content="">
+	<meta name="google-site-verification" content="">
+	
+  <!-- <link rel="shortcut icon" href="http://demo.nookthemes.com/html/Hipstar/_images/favicon.ico"> -->
+
+	
+  <%= stylesheet_link_tag "application" %>
+  <%= yield :additional_css %>
+  
+	<%#= javascript_include_tag "modernizr-2.0.min", "respond.min" %>
+	<%= javascript_include_tag  "respond.min.js" %>
+	
+  
+	
+</head>
+
+<body class="light">
+
+
+
+  <%= render :partial =>"layouts/main_nav" %>
+  
+  <div id="main" role="main">
+  <%= yield %>
+  </div>
+
+<!-- Footer -->
+	<footer id="footer">
+		<div id="social">
+			<a id="facebook" href="#" title="Facebook"></a>
+			<a id="twitter" href="#" title="Twitter"></a>
+		  <!-- <a id="forrst" href="#" title="Forrst"></a>
+		      <a id="dribbble" href="#" title="Dribbble"></a> -->
+		</div><!-- #social -->
+		
+		<div id="search">
+			<form method="post" action="#">
+				<input type="text" value="" placeholder="Search" name="s" id="query">
+			</form>
+		</div><!-- #search -->
+		
+		<div class="source-org vcard copyright">
+			<p>&copy; 2011 pilipoto</p>
+		</div><!-- .copyright -->
+	</footer>
+<!-- /Footer -->
+
+<!-- Large image viewer -->
+	<div id="img-preview-controls">
+		<a class="" id="img-title" href="#"></a>
+		<a id="img-view-post" href="#">View</a>
+		<a id="img-close" href="#">Close</a>
+	</div>
+<!-- /Large image viewer -->
+
+<div class="back-to-top"><a href="#">Up</a></div>
+
+<!-- Javascript (in footer for a reason) -->
+
+
+<%= javascript_include_tag "application" %>
+<%= yield :additional_js %>
+
+<!--[if lt IE 7 ]>
+	<script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
+	<script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
+<![endif]-->
+
+</body>
+</html>
